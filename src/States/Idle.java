@@ -12,7 +12,7 @@ public class Idle implements RoverState
         {
             EngineSystem engine = context.getEngine();
             engine.startDriving();
-            context.setState(new states.Driving());
+            context.setState(new Driving());
         } else
         {
             throw new IllegalArgumentException("Invalid 'distance' value.");
@@ -23,6 +23,6 @@ public class Idle implements RoverState
     {
         SoilAnalyser analyser = context.getAnalyser();
         analyser.startAnalysis();
-        context.setState(new states.AnalysingSoil());
+        context.setState(new AnalysingSoil());
     }
 }

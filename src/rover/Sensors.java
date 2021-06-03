@@ -7,7 +7,7 @@ public class Sensors
      */
     public double readTemperature()
     {
-        return 0.0;
+        return (Math.random() * (100.0 - (-100.0))) + -100;
     }
 
     /**
@@ -15,7 +15,7 @@ public class Sensors
      */
     public double readVisibility()
     {
-        return 0.0;
+        return (Math.random() * (20.0 - 0.0)) + 0.0;
     }
 
     /**
@@ -23,7 +23,7 @@ public class Sensors
      */
     public double readLightLevel()
     {
-        return 0.0;
+        return (Math.random() * (200000.0 - 0.0)) + 0.0;
     }
 
     /**
