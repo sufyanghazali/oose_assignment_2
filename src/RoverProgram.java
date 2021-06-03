@@ -8,7 +8,7 @@ import states.RoverState;
 
 public class RoverProgram
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         EarthComm comm = new EarthComm();
         EngineSystem engine = new EngineSystem();

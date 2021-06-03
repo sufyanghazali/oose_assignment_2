@@ -1,0 +1,34 @@
+# Clear and distinct responsibilities
+The rover package holds all the RoverAPI classes and the Rover class, which is made up of the former classes. The states
+package holds the State classes that represent the states the rover will be in when performing certain actions.
+
+
+# Error Handling
+The sources of error that the program looks out for may come from invalid commands or external errors that may effect
+the performance of the rover. Invalid arguments from invalid option commands, invalid values, and incorrectly formatted
+command strings will throw exceptions that will be caught by Rover.rove(), and an error message will be sent to 'Earth',
+via EarthComm.sendMessage() before continuing operation.
+
+
+# Dependency Injection
+Objects representing the rover's hardware are declared and initialized in main(), which are then used to construct a
+Rover object, instead of creating them in the Rover constructor.
+
+
+# Polymorphism #1 - State Pattern
+There are 2 states that dictate the allowance of certain commands to be performed by the rover: driving and analysis of
+the soil. One cannot executed if the rover is in the other state. The 3 RoverState classes were made to reflect this
+behaviour: Idle, Driving, AnalysingSoil.
+
+Instead of relying on multiple conditional statements, the state of the rover is monitored to decide what to do when a
+command is given. If a command that asks the rover to perform an action that is not possible in its current state,
+a message will be sent to Earth notifying of the error, instead of throwing an exception.
+
+
+# Polymorphism #2
+I wasn't able to figure out how to implement a second strategy to the problem.
+
+
+# UML
+UML illustrates class fields and methods and the relationships classes have with each other. However, there is no visual
+representation of the packages that the classes belong to.

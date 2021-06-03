@@ -14,7 +14,16 @@ public class EarthComm
      */
     public String pollCommand()
     {
-        return "P";
+        String[] options = {"D", "T", "S", "P", "E"};
+        String option = options[(int) (Math.random() * (options.length))];
+        String command = option;
+
+        if (option.equals("D") || option.equals("T"))
+        {
+            String val = Double.toString(Math.random() * (101));
+            command = command + " " + val;
+        }
+        return command;
     }
 
     /**

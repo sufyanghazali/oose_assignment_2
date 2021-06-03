@@ -68,12 +68,13 @@ public class Rover
                 if (command != null && validateCommand(command))
                     run(command);
 
-
                 // ======= sleep for a few milliseconds ======== //
-                Thread.sleep(100);
+                Thread.sleep(1000);
+
 
             } catch (InterruptedException | IllegalArgumentException | IllegalStateException e)
             {
+                System.out.println(e.getMessage());
                 comm.sendMessage("! " + e.getMessage());
             }
         }
@@ -184,7 +185,7 @@ public class Rover
 
         if (parts.length < 3)
         {
-            if (!contains(parts[0], options))
+            if (contains(parts[0], options))
             {
                 if (parts.length == 2)
                 {
@@ -216,7 +217,9 @@ public class Rover
         while (i < arr.length && !found)
         {
             if (arr[i].equals(str))
+            {
                 found = true;
+            }
             i++;
         }
 
