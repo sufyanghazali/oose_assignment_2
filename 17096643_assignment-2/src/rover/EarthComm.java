@@ -1,7 +1,5 @@
 package rover;
 
-import java.util.Scanner;
-
 public class EarthComm
 {
     /**
@@ -16,21 +14,15 @@ public class EarthComm
      */
     public String pollCommand()
     {
-//        String[] options = {"D", "T", "S", "P", "E"};
-//        String option = options[(int) (Math.random() * (options.length))];
-//        String command = option;
-//
-//        if (option.equals("D") || option.equals("T"))
-//        {
-//            String val = Double.toString(Math.random() * (101));
-//            command = command + " " + val;
-//        }
-//        return command;
-//...
+        String[] options = {"D", "T", "S", "P", "E"};
+        String option = options[(int) (Math.random() * (options.length))];
+        String command = option;
 
-        Scanner scan = new Scanner(System.in);
-        String command = scan.nextLine();
-
+        if (option.equals("D") || option.equals("T"))
+        {
+            String val = Double.toString(Math.random() * (101));
+            command = command + " " + val;
+        }
         return command;
     }
 
@@ -39,6 +31,5 @@ public class EarthComm
      */
     public void sendMessage(String msg)
     {
-        System.out.println(msg);
     }
 }

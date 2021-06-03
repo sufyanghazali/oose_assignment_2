@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="clean-build" basedir="." name="RoverProgram">
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="main-class" value="RoverProgram"/>
+
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac includeantruntime="false" destdir="${build.dir}" srcdir="${src.dir}"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar basedir="${build.dir}" destfile="${dist.dir}/${ant.project.name}.jar">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"></attribute>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar"/>
+
+    <target name="clean-build" depends="clean,jar"/>
+</project>

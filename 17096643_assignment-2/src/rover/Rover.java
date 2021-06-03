@@ -36,8 +36,6 @@ public class Rover
 
     public void rove()
     {
-        comm.sendMessage("We out here");
-
         while (true)
         {
             try
@@ -50,6 +48,7 @@ public class Rover
                 String command = comm.pollCommand(); // poll command
 
                 double vis = sensors.readVisibility();
+
 
                 // ======= perform actions if needed ======== //
                 if (totalDistance - currentDistance == targetDistance)
@@ -66,7 +65,6 @@ public class Rover
                 if (vis < 4.0)
                     comm.sendMessage(getEnvironmentalStatus());
 
-
                 if (command != null && validateCommand(command))
                     run(command);
 
@@ -76,6 +74,7 @@ public class Rover
 
             } catch (InterruptedException | IllegalArgumentException | IllegalStateException e)
             {
+                System.out.println(e.getMessage());
                 comm.sendMessage("! " + e.getMessage());
             }
         }
@@ -92,7 +91,6 @@ public class Rover
             switch (option)
             {
                 case 'D':
-                    System.out.println("Driving");
                     targetDistance = value;
                     drive(targetDistance);
                     break;
@@ -199,9 +197,6 @@ public class Rover
                     {
                         throw new IllegalArgumentException("Negative value given");
                     }
-                } else
-                {
-                    valid = true;
                 }
             } else
             {
