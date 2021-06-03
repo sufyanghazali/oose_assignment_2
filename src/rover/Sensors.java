@@ -1,3 +1,5 @@
+package rover;
+
 public class Sensors
 {
     /**
